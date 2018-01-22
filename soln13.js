@@ -3,14 +3,16 @@
 function solutions1(inputdata) {
   return inputdata
     .split("\n")
-    .map(line => line.split(": ").map(Number))
+    .map(line => line.split(": ")
+    .map(Number))
     .reduce((severity, [depth, range]) => severity + (depth % ((range - 1) * 2) === 0 ? depth * range : 0), 0);
 }
 
 function solutions2(inputdata) {
   inputdata = inputdata
     .split("\n")
-    .map(line => line.split(": ").map(Number));
+    .map(line => line.split(": ")
+    .map(Number));
 
   for (let delay = 0;; delay++) {
     if (inputdata.every(([depth, range]) => (depth + delay) % ((range - 1) * 2) !== 0)) 
